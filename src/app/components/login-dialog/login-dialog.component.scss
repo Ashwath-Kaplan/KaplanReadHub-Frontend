@@ -1,0 +1,40 @@
+.login-dialog {
+  width: 300px;
+}
+
+.login-dialog__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-dialog__title--heading {
+  margin-top: 20px;
+}
+
+.login-dialog__fields {
+  display: flex;
+  width: 90%;
+  margin: auto;
+}
+
+.login-dialog__fields--input {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-dialog__submit-button {
+  display: block;
+  margin: 20px auto;
+  margin-top: 0;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-dialog__submit-button:hover {
+  background-color: #0056b3;
+}

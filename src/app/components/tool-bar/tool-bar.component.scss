@@ -1,0 +1,19 @@
+.navbar {
+  background-color: rgb(136,89,83);
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar__header{
+  color: white;
+}
+
+.navbar__logo {
+  width: 55px;
+  margin: 5px;
+}
+
+.navbar__links {
+  margin-left: 10px;
+  border: 1px solid black;
+}

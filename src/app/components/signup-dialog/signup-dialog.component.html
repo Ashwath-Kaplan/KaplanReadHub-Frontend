@@ -1,0 +1,113 @@
+<div class="signup-dialog">
+  <div mat-dialog-title class="signup-dialog__title">
+    <h2 class="signup-dialog__title--heading">Sign up</h2>
+    <button mat-icon-button aria-label="close dialog" mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <form [formGroup]="signupForm" (ngSubmit)="signup()">
+    <mat-form-field class="signup-dialog__fields">
+      <mat-label>First name</mat-label>
+      <input
+        matInput
+        class="signup-dialog__fields--input"
+        type="text"
+        name="firstName"
+        formControlName="firstName"
+        required
+      />
+      <mat-error
+        *ngIf="
+          this.signupForm.get('firstName')?.touched &&
+          this.signupForm.get('firstName')?.hasError('required')
+        "
+      >
+        First name is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field class="signup-dialog__fields">
+      <mat-label>Last name</mat-label>
+      <input
+        matInput
+        class="signup-dialog__fields--input"
+        type="text"
+        name="lastName"
+        formControlName="lastName"
+        required
+      />
+      <mat-error
+        *ngIf="
+          this.signupForm.get('lastName')?.touched &&
+          this.signupForm.get('lastName')?.hasError('required')
+        "
+      >
+        Last name is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field class="signup-dialog__fields">
+      <mat-label>Email</mat-label>
+      <input
+        class="signup-dialog__fields--input"
+        matInput
+        name="email"
+        formControlName="email"
+        autocomplete="off"
+        required
+      />
+      <mat-error
+        *ngIf="
+          this.signupForm.get('email')?.touched &&
+          this.signupForm.get('email')?.hasError('required')
+        "
+      >
+        Email is required</mat-error
+      >
+      <mat-error
+        *ngIf="
+          this.signupForm.get('email')?.touched &&
+          this.signupForm.get('email')?.hasError('email')
+        "
+      >
+        Email must be a valid Email</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field class="signup-dialog__fields">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        class="signup-dialog__fields--input"
+        [type]="hide ? 'password' : 'text'"
+        name="password"
+        formControlName="password"
+        required
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+        type="button"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-error
+        *ngIf="
+          this.signupForm.get('password')?.touched &&
+          this.signupForm.get('password')?.hasError('required')
+        "
+      >
+        Password is required</mat-error
+      >
+    </mat-form-field>
+    <button
+      class="signup-dialog__submit-button"
+      type="submit"
+      mat-raised-button
+      [disabled]="!signupForm.valid"
+      color="primary"
+    >
+      Sign up
+    </button>
+  </form>
+</div>
