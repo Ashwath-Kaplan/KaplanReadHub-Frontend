@@ -1,19 +1,27 @@
 .navbar {
-  background-color: rgb(136,89,83);
+  background-color: white;
   display: flex;
   justify-content: space-between;
-}
 
-.navbar__header{
-  color: white;
-}
+  &__header {
+    color: white;
+  }
 
-.navbar__logo {
-  width: 55px;
-  margin: 5px;
-}
+  &__logo {
+    margin-left: 15px;
+    width: 200px;
+  }
 
-.navbar__links {
-  margin-left: 10px;
-  border: 1px solid black;
+  &__links {
+    color: rgb(85, 30, 25);
+    margin-right: 20px;
+    background: rgb(197, 110, 51);
+    background-color: rgb(197, 110, 51);
+    border: 1px solid rgb(197, 110, 51);
+
+    &:hover {
+      background-color: rgb(197, 120, 80);
+      color: white;
+    }
+  }
 }

@@ -16,6 +16,6 @@ export class ToolBarComponent {
   }
 
   openSignupDialog() {
-     this.dialog.open(SignupDialogComponent);
+    this.dialog.open(SignupDialogComponent);
   }
 }

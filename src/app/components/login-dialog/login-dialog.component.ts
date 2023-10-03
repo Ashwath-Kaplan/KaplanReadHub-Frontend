@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarService } from '../../services/snack-bar/snack-bar.service';
 
 @Component({
   selector: 'app-login-dialog',
@@ -13,7 +13,7 @@ export class LoginDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<LoginDialogComponent>,
-    private _snackBar: MatSnackBar
+    public _snackBar: SnackBarService
   ) {}
 
   loginForm: FormGroup = new FormGroup({
@@ -22,17 +22,7 @@ export class LoginDialogComponent {
   });
 
   login() {
-    const emailControl = this.loginForm.get('email');
-    const passwordControl = this.loginForm.get('password');
-
-    if (emailControl && passwordControl) {
-      console.log('Email value:', emailControl.value);
-      console.log('Password value:', passwordControl.value);
-    }
-    this.close();
-    this._snackBar.open('Login Successful', 'X', {
-      duration: 3000,
-    });
+    
   }
 
   close() {

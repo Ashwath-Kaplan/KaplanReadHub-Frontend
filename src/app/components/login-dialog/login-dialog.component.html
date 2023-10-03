@@ -1,12 +1,12 @@
 <div class="login-dialog">
-  <div mat-dialog-title class="login-dialog__title">
+  <div class="login-dialog__title">
     <h2 class="login-dialog__title--heading">Log in</h2>
-    <button mat-icon-button aria-label="close dialog" mat-dialog-close>
-      <mat-icon>close</mat-icon>
-    </button>
+    <mat-icon class="login-dialog__close-icon" (click)="close()"
+      >close</mat-icon
+    >
   </div>
   <form [formGroup]="loginForm" (ngSubmit)="login()">
-    <mat-form-field class="login-dialog__fields">
+    <mat-form-field class="login-dialog__fields" appearance="outline">
       <mat-label>Email</mat-label>
       <input
         class="login-dialog__fields--input"
@@ -17,6 +17,7 @@
         required
       />
       <mat-error
+        class="login-dialog__fields--error"
         *ngIf="
           this.loginForm.get('email')?.touched &&
           this.loginForm.get('email')?.hasError('required')
@@ -25,6 +26,7 @@
         Email is required</mat-error
       >
       <mat-error
+        class="login-dialog__fields--error"
         *ngIf="
           this.loginForm.get('email')?.touched &&
           this.loginForm.get('email')?.hasError('email')
@@ -33,27 +35,25 @@
         Email must be a valid Email</mat-error
       >
     </mat-form-field>
-    <mat-form-field class="login-dialog__fields">
+    <mat-form-field class="login-dialog__fields" appearance="outline">
       <mat-label>Password</mat-label>
-      <input
-        matInput
-        class="signup-dialog__fields--input"
-        [type]="hide ? 'password' : 'text'"
-        name="password"
-        formControlName="password"
-        required
-      />
-      <button
-        mat-icon-button
-        matSuffix
-        (click)="hide = !hide"
-        [attr.aria-label]="'Hide password'"
-        [attr.aria-pressed]="hide"
-        type="button"
-      >
-        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-      </button>
+      <div class="login-dialog__fields--container">
+        <input
+          matInput
+          class="login-dialog__fields--input"
+          [type]="hide ? 'password' : 'text'"
+          name="password"
+          formControlName="password"
+          required
+        />
+        <mat-icon
+          class="login-dialog__visibility-icon"
+          (click)="hide = !hide"
+          >{{ hide ? "visibility_off" : "visibility" }}</mat-icon
+        >
+      </div>
       <mat-error
+        class="login-dialog__fields--error"
         *ngIf="
           this.loginForm.get('password')?.touched &&
           this.loginForm.get('password')?.hasError('required')
@@ -62,13 +62,7 @@
         Password is required</mat-error
       >
     </mat-form-field>
-    <button
-      class="login-dialog__submit-button"
-      type="submit"
-      mat-raised-button
-      [disabled]="!loginForm.valid"
-      color="primary"
-    >
+    <button class="login-dialog__submit-button" type="submit" mat-raised-button>
       Log in
     </button>
   </form>
