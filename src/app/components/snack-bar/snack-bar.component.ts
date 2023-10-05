@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
+import { snackBarData } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-snack-bar',
@@ -7,9 +8,9 @@ import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
   styleUrls: ['./snack-bar.component.scss'],
 })
 export class SnackBarComponent {
-  constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any) {}
+  constructor(@Inject(MAT_SNACK_BAR_DATA) public snackBarData: snackBarData) {}
 
   closeSnackbar() {
-    this.data.snackbar.dismiss();
+    this.snackBarData.snackbar.dismiss();
   }
 }

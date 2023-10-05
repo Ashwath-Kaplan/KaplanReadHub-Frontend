@@ -1,20 +1,32 @@
 <mat-toolbar class="navbar">
   <img class="navbar__logo" src="./assets/krh-logo.png" />
-  <h1 class="navbar__header">Welcome to Kaplan ReadHub</h1>
-  <div>
-    <a
-      class="navbar__links"
-      mat-button
-      mat-raised-button
-      (click)="openLoginDialog()"
-      >Log in</a
-    >
-    <a
-      class="navbar__links"
-      mat-button
-      mat-raised-button
-      (click)="openSignupDialog()"
-      >Sign up</a
-    >
-  </div>
+  <ng-container *ngIf="!isAuthenticated">
+    <div class="navbar__items">
+      <button
+        class="navbar__items__button"
+        mat-raised-button
+        (click)="openLoginDialog()"
+      >
+        Log in</button
+      ><button
+        class="navbar__items__button"
+        mat-raised-button
+        (click)="openSignupDialog()"
+      >
+        Sign up
+      </button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isAuthenticated">
+    <div class="navbar__items">
+      <span class="navbar__items__username">Hi, {{ username }} !</span>
+      <button
+        class="navbar__items__button"
+        mat-raised-button
+        (click)="logout()"
+      >
+        Logout
+      </button>
+    </div>
+  </ng-container>
 </mat-toolbar>

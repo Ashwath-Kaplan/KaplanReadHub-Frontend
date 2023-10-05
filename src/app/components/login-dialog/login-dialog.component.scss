@@ -1,62 +1,66 @@
 .login-dialog {
-  width: 300px;
-}
-
-.login-dialog__title {
+  padding: 2em 2em;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  flex-direction: column;
 
-.login-dialog__title--heading {
-  margin: 20px;
-}
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-.login-dialog__close-icon {
-  font-size: 20px;
-  margin: 20px;
-  cursor: pointer;
-}
+    &__title {
+      margin-bottom: 20px !important;
+      line-height: 20px !important;
+      color: rgb(85, 30, 25);
+    }
 
-.login-dialog__fields {
-  display: flex;
-  width: 260px;
-  margin: auto;
-}
+    &__close-icon {
+      font-size: 20px !important;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+  }
 
-// .login-dialog__fields--input {
-//   border: 1px solid black;
-//   border-radius: 4px;
-// }
+  &__form {
+    display: flex;
+    flex-direction: column;
 
-.login-dialog__fields--error {
-  margin-left: -20px;
-}
+    &__field {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      margin: 0 auto 10px;
 
-.login-dialog__fields--container {
-  display: flex;
-  align-items: center;
-}
+      .mat-mdc-form-field-subscript-wrapper {
+        .mat-mdc-form-field-error-wrapper {
+          padding: 0;
+        }
+      }
 
-.login-dialog__visibility-icon {
-  font-size: 20px;
-  cursor: pointer;
-  margin: auto;
-}
+      &__error {
+        margin: 5px auto;
+      }
 
-.login-dialog__submit-button {
-  display: flex;
-  margin: 20px auto;
-  margin-top: 0;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  background-color: rgb(223, 136, 78);
-  color: white;
-  width: 260px;
-}
+      &__password {
+        display: flex;
 
-.login-dialog__submit-button:hover {
-  background-color: rgb(197, 110, 51);
+        &__visibility-icon {
+          font-size: 20px;
+          cursor: pointer;
+          margin: auto;
+        }
+      }
+    }
+
+    &__submit-button {
+      cursor: pointer;
+      color: white !important;
+      background-color: rgb(223, 136, 78) !important;
+
+      &:hover {
+        color: white;
+        background-color: rgb(85, 30, 25) !important;
+      }
+    }
+  }
 }

@@ -1,56 +1,66 @@
 .signup-dialog {
-  width: 300px;
+  padding: 2em 2em;
+  display: flex;
+  flex-direction: column;
 
-  &__title {
+  &__heading {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    &--heading {
-      margin: 20px;
+    &__title {
+      margin-bottom: 20px !important;
+      line-height: 20px !important;
+      color: rgb(85, 30, 25) ;
+    }
+
+    &__close-icon {
+      font-size: 20px !important;
+      margin-bottom: 20px;
+      cursor: pointer;
     }
   }
 
-  &__close-icon {
-    font-size: 20px;
-    margin: 20px;
-    cursor: pointer;
-  }
-
-  &__fields {
+  &__form {
     display: flex;
-    width: 260px;
     flex-direction: column;
-    margin: 0 auto 10px;
 
-    &--error {
-      margin: 5px auto;
-      margin-left: -20px;
-    }
-
-    &--container {
+    &__field {
       display: flex;
-      align-items: center;
+      width: 100%;
+      flex-direction: column;
+      margin: 0 auto 10px;
+
+      .mat-mdc-form-field-subscript-wrapper {
+        .mat-mdc-form-field-error-wrapper {
+          padding: 0;
+        }
+      }
+
+      &__error {
+        margin: 5px auto;
+      }
+
+      &__password {
+        display: flex;
+
+        &__visibility-icon {
+          font-size: 20px;
+          cursor: pointer;
+          margin: auto;
+        }
+      }
     }
-  }
-  &__visibility-icon {
-    font-size: 20px;
-    cursor: pointer;
-  }
 
-  &__submit-button {
-    display: flex;
-    margin: 20px auto;
-    margin-top: 0;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    background-color: rgb(223, 136, 78);
-    color: white;
-    width: 260px;
+    &__submit-button {
+      cursor: pointer;
+      color: white !important;
+      background-color: rgb(223, 136, 78) !important;
 
-    &:hover {
-      background-color: rgb(197, 110, 51);
+      &:hover {
+        color: white;
+        background-color: rgb(85, 30, 25) !important;
+      }
     }
   }
 }

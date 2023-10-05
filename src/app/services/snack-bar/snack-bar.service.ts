@@ -17,9 +17,9 @@ export class SnackBarService {
         snackbar: this._snackBar,
       },
       panelClass: 'success-snackbar',
-      horizontalPosition: 'end',
+      horizontalPosition: 'center',
       verticalPosition: 'top',
-      duration: 2000,
+      duration: 3000,
     });
   }
 
@@ -32,9 +32,9 @@ export class SnackBarService {
         snackbar: this._snackBar,
       },
       panelClass: 'error-snackbar',
-      horizontalPosition: 'end',
+      horizontalPosition: 'center',
       verticalPosition: 'top',
-      duration: 2000,
+      duration: 3000,
     });
   }
 }

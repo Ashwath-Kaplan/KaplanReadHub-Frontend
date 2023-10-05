@@ -3,25 +3,28 @@
   display: flex;
   justify-content: space-between;
 
-  &__header {
-    color: white;
-  }
-
   &__logo {
     margin-left: 15px;
     width: 200px;
   }
 
-  &__links {
-    color: rgb(85, 30, 25);
-    margin-right: 20px;
-    background: rgb(197, 110, 51);
-    background-color: rgb(197, 110, 51);
-    border: 1px solid rgb(197, 110, 51);
+  &__items {
+    &__button {
+      color: white !important;
+      background-color: rgb(197, 110, 51) !important;
+      margin: auto;
+      margin-right: 20px;
+      width: 80px;
 
-    &:hover {
-      background-color: rgb(197, 120, 80);
-      color: white;
+      &:hover {
+        color: white !important;
+        background-color: rgb(85, 30, 25) !important;
+      }
+    }
+
+    &__username {
+      color: black;
+      margin-right: 50px;
     }
   }
 }

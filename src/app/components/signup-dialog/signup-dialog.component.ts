@@ -1,16 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { SnackBarService } from '../../services/snack-bar/snack-bar.service';
 import { UserApiService } from 'src/app/services/users/users-api.service';
+import { UserApiResponse } from 'src/app/interfaces';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup-dialog',
   templateUrl: './signup-dialog.component.html',
   styleUrls: ['./signup-dialog.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class SignupDialogComponent {
-  hide = true;
+  passwordVisibilty = false;
 
   constructor(
     public _dialogRef: MatDialogRef<SignupDialogComponent>,
@@ -38,20 +41,20 @@ export class SignupDialogComponent {
     this.markFormGroupTouched(this.signupForm);
 
     if (this.signupForm.valid) {
-      const userData = this.signupForm.value;
-      this._userApi.signup(userData).subscribe(
-        (res: any) => {
+      const userProfile = this.signupForm.value;
+      this._userApi.signup(userProfile).subscribe(
+        (response: UserApiResponse) => {
           // Handle success
-          this._snackBar.openSuccessSnackbar(res.message, 'Okay');
+          this._snackBar.openSuccessSnackbar(response.message, 'Close');
           this.close();
         },
-        (err: any) => {
+        (err: HttpErrorResponse) => {
           if (err.status === 0) {
             // Network error
-            this._snackBar.openErrorSnackbar('Network Error', 'Okay');
+            this._snackBar.openErrorSnackbar('Network Error', 'Close');
           } else {
             // Handle error
-            this._snackBar.openErrorSnackbar(err.error.message, 'Okay');
+            this._snackBar.openErrorSnackbar(err.error.message, 'Close');
           }
           this.close();
         }

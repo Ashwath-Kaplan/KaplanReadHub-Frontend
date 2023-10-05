@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SignupDialogComponent } from '../signup-dialog/signup-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -9,13 +8,23 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./tool-bar.component.scss'],
 })
 export class ToolBarComponent {
+  @Input() isAuthenticated: boolean = false;
+  @Input() username: string = '';
+  @Output() loginRequested = new EventEmitter<void>();
+  @Output() logoutRequested = new EventEmitter<void>();
   constructor(private dialog: MatDialog) {}
 
   openLoginDialog() {
-    this.dialog.open(LoginDialogComponent);
+    this.loginRequested.emit();
   }
 
   openSignupDialog() {
-    this.dialog.open(SignupDialogComponent);
+    this.dialog.open(SignupDialogComponent, {
+      width: '30%',
+    });
+  }
+
+  logout() {
+    this.logoutRequested.emit();
   }
 }
