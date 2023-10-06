@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { SnackBarService } from '../../services/snack-bar/snack-bar.service';
 import { UserApiService } from 'src/app/services/users/users-api.service';
-import { UserApiResponse } from 'src/app/interfaces';
+import { IUserApiResponse } from 'src/app/interfaces';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -43,7 +43,7 @@ export class SignupDialogComponent {
     if (this.signupForm.valid) {
       const userProfile = this.signupForm.value;
       this._userApi.signup(userProfile).subscribe(
-        (response: UserApiResponse) => {
+        (response: IUserApiResponse) => {
           // Handle success
           this._snackBar.openSuccessSnackbar(response.message, 'Close');
           this.close();

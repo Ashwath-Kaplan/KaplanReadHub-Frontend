@@ -14,17 +14,9 @@ export class ToolBarComponent {
   @Output() logoutRequested = new EventEmitter<void>();
   constructor(private dialog: MatDialog) {}
 
-  openLoginDialog() {
-    this.loginRequested.emit();
-  }
-
   openSignupDialog() {
     this.dialog.open(SignupDialogComponent, {
       width: '30%',
     });
-  }
-
-  logout() {
-    this.logoutRequested.emit();
   }
 }

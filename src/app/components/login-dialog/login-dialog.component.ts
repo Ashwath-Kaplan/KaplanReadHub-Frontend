@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { UserApiService } from 'src/app/services/users/users-api.service';
 import { SnackBarService } from '../../services/snack-bar/snack-bar.service';
-import { UserApiLoginResponse } from 'src/app/interfaces/users.interface';
+import { IUserApiLoginResponse } from 'src/app/interfaces';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -18,7 +18,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   encapsulation: ViewEncapsulation.None,
 })
 export class LoginDialogComponent {
-  @Output() loginSuccess = new EventEmitter<UserApiLoginResponse['user']>();
+  @Output() loginSuccess = new EventEmitter<IUserApiLoginResponse['user']>();
   passwordVisibilty = false;
 
   constructor(
@@ -47,7 +47,7 @@ export class LoginDialogComponent {
     if (this.loginForm.valid) {
       const userCredentials = this.loginForm.value;
       this._userApi.login(userCredentials).subscribe(
-        (response: UserApiLoginResponse) => {
+        (response: IUserApiLoginResponse) => {
           // Handle success
           this._snackBar.openSuccessSnackbar(response.message, 'Close');
           this._userApi.onSuccessfulLogin(response.user);

@@ -4,9 +4,9 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Observable } from 'rxjs/internal/Observable';
 import { USERS_API_URL } from 'src/app/constants';
 import {
-  UserApiLoginResponse,
-  UserCredentials,
-  UserProfile,
+  IUserApiLoginResponse,
+  IUserCredentials,
+  IUserProfile,
 } from 'src/app/interfaces';
 
 @Injectable({
@@ -32,11 +32,11 @@ export class UserApiService {
     return this.email.asObservable();
   }
 
-  signup(userProfile: UserProfile): Observable<any> {
+  signup(userProfile: IUserProfile): Observable<any> {
     return this._http.post(`${this.apiUrl}/adduser`, userProfile);
   }
 
-  login(userCredentials: UserCredentials): Observable<any> {
+  login(userCredentials: IUserCredentials): Observable<any> {
     return this._http.post(`${this.apiUrl}/login`, userCredentials);
   }
 
@@ -45,7 +45,7 @@ export class UserApiService {
     return this._http.post(`${this.apiUrl}/logout`, email);
   }
 
-  onSuccessfulLogin(user: UserApiLoginResponse['user']) {
+  onSuccessfulLogin(user: IUserApiLoginResponse['user']) {
     this.isAuthenticated.next(true);
     this.username.next(user.firstName + ' ' + user.lastName);
     this.email.next(user.email);

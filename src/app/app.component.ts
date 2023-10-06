@@ -4,7 +4,7 @@ import { UserApiService } from './services/users/users-api.service';
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 import { SnackBarService } from './services/snack-bar/snack-bar.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { UserApiResponse } from './interfaces';
+import { IUserApiResponse } from './interfaces';
 
 @Component({
   selector: 'app-root',
@@ -41,7 +41,7 @@ export class AppComponent {
 
   logout() {
     this._userApiService.logout({ email: this.email }).subscribe(
-      (res: UserApiResponse) => {
+      (res: IUserApiResponse) => {
         // Handle success
         this._userApiService.onSuccessfulLogout();
         this._snackBar.openSuccessSnackbar(res.message, 'Okay');

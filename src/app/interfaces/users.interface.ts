@@ -1,21 +1,21 @@
-export interface UserProfile {
+export interface IUserProfile {
   firstName: string;
   lastName: string;
   email: string;
   password: string;
 }
 
-export interface UserCredentials {
+export interface IUserCredentials {
   email: string;
   password: string;
 }
 
-export interface UserApiResponse {
+export interface IUserApiResponse {
   status: boolean;
   message: string;
 }
 
-export interface UserApiLoginResponse {
+export interface IUserApiLoginResponse {
   status: boolean;
   message: string;
   user: {

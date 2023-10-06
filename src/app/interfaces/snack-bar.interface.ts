@@ -1,6 +1,6 @@
 import { MatSnackBar } from "@angular/material/snack-bar";
 
-export interface snackBarData{
+export interface ISnackBarData{
     message: string;
     action: string;
     icon: string;
