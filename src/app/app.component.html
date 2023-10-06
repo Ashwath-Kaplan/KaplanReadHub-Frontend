@@ -1,0 +1,7 @@
+<app-tool-bar
+  [isAuthenticated]="isAuthenticated"
+  [username]="username"
+  (loginRequested)="openLoginDialog()"
+  (logoutRequested)="logout()"
+></app-tool-bar>
+<div class="app-background"></div>

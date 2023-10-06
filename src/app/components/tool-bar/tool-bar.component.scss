@@ -1,0 +1,30 @@
+.navbar {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+
+  &__logo {
+    margin-left: 15px;
+    width: 200px;
+  }
+
+  &__items {
+    &__button {
+      color: white !important;
+      background-color: rgb(197, 110, 51) !important;
+      margin: auto;
+      margin-right: 20px;
+      width: 80px;
+
+      &:hover {
+        color: white !important;
+        background-color: rgb(85, 30, 25) !important;
+      }
+    }
+
+    &__username {
+      color: black;
+      margin-right: 50px;
+    }
+  }
+}

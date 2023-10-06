@@ -1,0 +1,32 @@
+<mat-toolbar class="navbar">
+  <img class="navbar__logo" src="./assets/krh-logo.png" />
+  <ng-container *ngIf="!isAuthenticated">
+    <div class="navbar__items">
+      <button
+        class="navbar__items__button"
+        mat-raised-button
+        (click)="loginRequested.emit()"
+      >
+        Log in</button
+      ><button
+        class="navbar__items__button"
+        mat-raised-button
+        (click)="openSignupDialog()"
+      >
+        Sign up
+      </button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isAuthenticated">
+    <div class="navbar__items">
+      <span class="navbar__items__username">Hi, {{ username }} !</span>
+      <button
+        class="navbar__items__button"
+        mat-raised-button
+        (click)="logoutRequested.emit()"
+      >
+        Logout
+      </button>
+    </div>
+  </ng-container>
+</mat-toolbar>
