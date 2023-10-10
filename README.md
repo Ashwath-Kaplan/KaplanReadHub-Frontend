@@ -1,28 +1,43 @@
-# KaplanReadHubFrontend
+# Kaplan ReadHub-Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
+## Introduction
+Kaplan Readhub is an onlne bookstore web application where users can explore, buy and read books. This frontend repository offers user registration, login functionality, and access to a dynamic books table where users can explore, filter, and discover a wide range of books.
 
-## Development server
+This project was developed with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Key Features
 
-## Code scaffolding
+1. **User Registration**: New users can create an account by providing their information, allowing them to access the platform's features.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2. **User Login**: Registered users can log in securely, ensuring a personalized experience during their visit.
 
-## Build
+3. **Books Table**: Once logged in, users are presented with a captivating books table displaying a vast collection of books. This table is both scrollable and filterable, making it easy to explore books.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+4. **Book Filtering**: The books table includes a filter feature, enabling users to search for specific books by title, author, publisher, and price.
 
-## Running unit tests
+## Getting Started
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+These instructions will help you set up and run the Kaplan ReadHub frontend on your local machine.
 
-## Running end-to-end tests
-# test comment
+### Prerequisites
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+To run the application, you'll need the following software installed:
 
-## Further help
+- [Node.js](https://nodejs.org/) - JavaScript runtime
+- [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/) - Package manager
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Installation
+
+1. Clone this repository to your local machine:
+   ```bash
+   git clone https://github.com/Ashwath-Kaplan/KaplanReadHub-Frontend.git
+2. Navigate to the project directory:
+   ```bash
+   cd KaplanReadHub-Frontend
+3. Install the project dependencies:
+    ```bash
+   npm install
+### Development server
+
+  Run `ng serve` for a development server. Navigate to `http://localhost:4200/`. 
+  The application will automatically reload if you change any of the source files.
