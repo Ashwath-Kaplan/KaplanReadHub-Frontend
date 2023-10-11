@@ -23,4 +23,21 @@ export interface IUserApiLoginResponse {
     lastName: string;
     email: string;
   };
+  token: string;
+}
+
+export interface IGetUserApiResponse {
+  status: boolean;
+  message: string;
+  user: {
+    firstName: string;
+    lastName: string;
+    email: string;
+  };
+}
+
+export interface IUser {
+  firstName: string;
+  lastName: string;
+  email: string;
 }

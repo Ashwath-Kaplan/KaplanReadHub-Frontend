@@ -1,15 +1,12 @@
-import {
-  Component,
-  EventEmitter,
-  Output,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { UserApiService } from 'src/app/services/users/users-api.service';
+import { UserApiService } from 'src/app/services/users-api/users-api.service';
 import { SnackBarService } from '../../services/snack-bar/snack-bar.service';
 import { IUserApiLoginResponse } from 'src/app/interfaces';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/auth/authentication.service';
 
 @Component({
   selector: 'app-login-dialog',
@@ -18,13 +15,14 @@ import { HttpErrorResponse } from '@angular/common/http';
   encapsulation: ViewEncapsulation.None,
 })
 export class LoginDialogComponent {
-  @Output() loginSuccess = new EventEmitter<IUserApiLoginResponse['user']>();
   passwordVisibilty = false;
 
   constructor(
     public _dialogRef: MatDialogRef<LoginDialogComponent>,
     private _userApi: UserApiService,
-    public _snackBar: SnackBarService
+    public _snackBar: SnackBarService,
+    private _router: Router,
+    private _authService: AuthenticationService
   ) {}
 
   loginForm: FormGroup = new FormGroup({
@@ -42,30 +40,34 @@ export class LoginDialogComponent {
   }
 
   login() {
-    this.markFormGroupTouched(this.loginForm);
+    const userEnteredPassword = this.loginForm.get('password')?.value;
+    const base64Password = btoa(userEnteredPassword);
 
-    if (this.loginForm.valid) {
-      const userCredentials = this.loginForm.value;
-      this._userApi.login(userCredentials).subscribe(
-        (response: IUserApiLoginResponse) => {
-          // Handle success
-          this._snackBar.openSuccessSnackbar(response.message, 'Close');
-          this._userApi.onSuccessfulLogin(response.user);
-          this.close();
-          this.loginSuccess.emit(response.user);
-        },
-        (err: HttpErrorResponse) => {
-          if (err.status === 0) {
-            // Network error
-            this._snackBar.openErrorSnackbar('Network Error', 'Close');
-          } else {
-            // Handle error
-            this._snackBar.openErrorSnackbar(err.error.message, 'Close');
-          }
-          this.close();
+    const userCredentials = {
+      email: this.loginForm.get('email')?.value,
+      password: base64Password,
+    };
+
+    this._userApi.login(userCredentials).subscribe(
+      (res: IUserApiLoginResponse) => {
+        // Handle success
+        this._snackBar.openSuccessSnackbar(res.message, 'Close');
+        this.close();
+        this._authService.setToken(res.token);
+        this._userApi.updateUserData(res.user);
+        this._router.navigate(['/dashboard']);
+      },
+      (err: HttpErrorResponse) => {
+        if (err.status === 0) {
+          // Network error
+          this._snackBar.openErrorSnackbar('Network Error', 'Close');
+        } else {
+          // Handle error
+          this._snackBar.openErrorSnackbar(err.error.message, 'Close');
         }
-      );
-    }
+        this.close();
+      }
+    );
   }
 
   close() {

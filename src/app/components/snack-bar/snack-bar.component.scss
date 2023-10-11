@@ -1,4 +1,5 @@
-.snack-bar {
+.success-snackbar,
+.error-snackbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,8 +10,24 @@
     width: 2rem;
     margin-right: 0.5rem;
   }
+}
+
+.success-snackbar {
+  &__icon {
+    color: #01dc6a;
+  }
 
   &__button {
-    color: white;
+    color: #01dc6a !important;
+  }
+}
+
+.error-snackbar {
+  &__icon {
+    color: #fe3451;
+  }
+
+  &__button {
+    color: #fe3451 !important;
   }
 }
