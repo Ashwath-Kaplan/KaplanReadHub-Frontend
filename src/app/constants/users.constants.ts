@@ -1,1 +1,1 @@
-export const USERS_API_URL = 'http://localhost:4000/kaplanreadhub/user';
+export const USERS_API_URL = 'http://localhost:4000/api/v1/kaplanreadhub/users';

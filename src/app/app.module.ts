@@ -20,6 +20,9 @@ import { ToolBarComponent } from './components/tool-bar/tool-bar.component';
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 import { SignupDialogComponent } from './components/signup-dialog/signup-dialog.component';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
+import { DashboardComponent } from './containers/dashboard/dashboard.component';
+import { BooksTableComponent } from './components/books-table/books-table.component';
+import { HomepageComponent } from './containers/homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
     LoginDialogComponent,
     SignupDialogComponent,
     SnackBarComponent,
+    DashboardComponent,
+    BooksTableComponent,
+    HomepageComponent,
   ],
   imports: [
     BrowserModule,

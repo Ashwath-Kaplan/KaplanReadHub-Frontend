@@ -5,7 +5,7 @@
       <button
         class="navbar__items__button"
         mat-raised-button
-        (click)="loginRequested.emit()"
+        (click)="openLoginDialog()"
       >
         Log in</button
       ><button
@@ -19,11 +19,13 @@
   </ng-container>
   <ng-container *ngIf="isAuthenticated">
     <div class="navbar__items">
-      <span class="navbar__items__username">Hi, {{ username }} !</span>
+      <span class="navbar__items__username"
+        >Hi, {{ userName }} !</span
+      >
       <button
         class="navbar__items__button"
         mat-raised-button
-        (click)="logoutRequested.emit()"
+        (click)="logout()"
       >
         Logout
       </button>

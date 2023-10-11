@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { SnackBarService } from '../../services/snack-bar/snack-bar.service';
-import { UserApiService } from 'src/app/services/users/users-api.service';
+import { UserApiService } from 'src/app/services/users-api/users-api.service';
 import { IUserApiResponse } from 'src/app/interfaces';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -38,28 +38,28 @@ export class SignupDialogComponent {
   }
 
   signup() {
-    this.markFormGroupTouched(this.signupForm);
+    // Convert type of passwoord to base64
+    const userEnteredPassword = this.signupForm.get('password')?.value;
+    const base64Password = btoa(userEnteredPassword);
 
-    if (this.signupForm.valid) {
-      const userProfile = this.signupForm.value;
-      this._userApi.signup(userProfile).subscribe(
-        (response: IUserApiResponse) => {
-          // Handle success
-          this._snackBar.openSuccessSnackbar(response.message, 'Close');
-          this.close();
-        },
-        (err: HttpErrorResponse) => {
-          if (err.status === 0) {
-            // Network error
-            this._snackBar.openErrorSnackbar('Network Error', 'Close');
-          } else {
-            // Handle error
-            this._snackBar.openErrorSnackbar(err.error.message, 'Close');
-          }
-          this.close();
+    const userProfile = { ...this.signupForm.value, password: base64Password };
+    this._userApi.signup(userProfile).subscribe(
+      (res: IUserApiResponse) => {
+        // Handle success
+        this._snackBar.openSuccessSnackbar(res.message, 'Close');
+        this.close();
+      },
+      (err: HttpErrorResponse) => {
+        if (err.status === 0) {
+          // Network error
+          this._snackBar.openErrorSnackbar('Network Error', 'Close');
+        } else {
+          // Handle error
+          this._snackBar.openErrorSnackbar(err.error.message, 'Close');
         }
-      );
-    }
+        this.close();
+      }
+    );
   }
 
   close() {
